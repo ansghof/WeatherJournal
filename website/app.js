@@ -28,10 +28,10 @@ function buttonClickListener(event) {
           temperature: myTemp,
           userResponse: document.getElementById("feelings").value
         });
-        document.getElementById("feelings").value = "";
-        document.getElementById("zip").value = "";
       })
       .then(() => {
+        document.getElementById("feelings").value = "";
+        document.getElementById("zip").value = "";
         updateUi("/projectData");
       });
   } else {
@@ -77,11 +77,4 @@ const persistWeatherData = async (url = "", data = {}) => {
     },
     body: JSON.stringify(data) // body data type must match "Content-Type" header
   });
-
-  // try {
-  //   const newData = await response.json();
-  //   return newData;
-  // } catch (error) {
-  //   console.log("error", error);
-  // }
 };
