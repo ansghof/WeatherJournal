@@ -25,8 +25,8 @@ function buttonClickListener(event) {
       .then(() => {
         persistWeatherData("/projectData", {
           date: newDate,
-          temperature: myTemp,
-          userResponse: document.getElementById("feelings").value
+          temp: myTemp,
+          feel: document.getElementById("feelings").value
         });
       })
       .then(() => {
@@ -44,9 +44,10 @@ const updateUi = async (url, data = {}) => {
   const entries = await fetch(url);
   try {
     const data = await entries.json();
-    document.getElementById("date").textContent = data.date;
-    document.getElementById("temp").textContent = data.temperature + "°C";
-    document.getElementById("content").textContent = data.userResponse;
+    // console.log(data);
+    document.getElementById("date").innerHTML = data.date;
+    document.getElementById("temp").innerHTML = data.temp + "°C";
+    document.getElementById("content").innerHTML = data.feel;
   } catch (error) {
     console.log("💩 something went wrong during ui update... ", error);
   }

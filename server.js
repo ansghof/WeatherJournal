@@ -39,7 +39,10 @@ app.post("/projectData", postProjectData);
 
 function postProjectData(request, response) {
   response.status = 201;
-  response.send();
-  projectData = request.body;
+  data = request.body;
+  projectData["temp"] = data.temp;
+  projectData["feel"] = data.feel;
+  projectData["date"] = data.date;
+  response.send(projectData);
 }
 //#endregion
